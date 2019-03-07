@@ -234,6 +234,16 @@ namespace SDNUOJ.Controllers.Core
                 return MethodResult.Failed("Two passwords are not match!");
             }
 
+            if (RegexVerify.IsPureNumber(password))
+            {
+                return MethodResult.Failed("Password can not be pure numbers");
+            }
+
+            if (password.Length <= 6)
+            {
+                return MethodResult.Failed("Password is too short");
+            }
+
             if (String.IsNullOrEmpty(entity.Email))
             {
                 return MethodResult.Failed("Email address can not be NULL!");

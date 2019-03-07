@@ -57,7 +57,7 @@ namespace SDNUOJ.Utilities.Text.RegularExpressions
         }
 
         /// <summary>
-        /// 判断给定文字是否是数字
+        /// 判断给定文字是否是数字(正负均可)
         /// </summary>
         /// <param name="s">字符串</param>
         /// <returns>给定字符串是否是数字</returns>
@@ -158,6 +158,22 @@ namespace SDNUOJ.Utilities.Text.RegularExpressions
             }
 
             String pattern = @"(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])";
+            return Regex.IsMatch(s, pattern);
+        }
+
+        /// <summary>
+        /// 判断给定文字是否是纯数字(非负)
+        /// </summary>
+        /// <param name="s">字符串</param>
+        /// <returns>判断给定文字是否是纯数字</returns>
+        public static Boolean IsPureNumber(String s)
+        {
+            if (String.IsNullOrEmpty(s))
+            {
+                return false;
+            }
+
+            String pattern = @"^\d+$";
             return Regex.IsMatch(s, pattern);
         }
     }
